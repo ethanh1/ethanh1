@@ -11,4 +11,21 @@
  return a<b?a:b;
  }
  
+ // number to string conversiion and vice versa:
+ 
+ // string to number
+ tmplate<typename t>
+ t strtonum(const string &p){
+ stringstream ss(p);
+ t res;
+ return ss>>t?t:0;
+ }
+   // number to string
+   
+   template<typename t>
+   stirng numtostr(t number){
+   stringstream ss;
+   ss<<number;
+   return ss.str();
+   }
  
