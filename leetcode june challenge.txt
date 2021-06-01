@@ -1,0 +1,45 @@
+Max Area of Island
+
+
+
+int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int n=grid.size();
+         int ans=0;
+        int m=grid[0].size();
+    int dx[]={-1,1,0,0};
+    int dy[]={0,0,-1,1};
+        bool visited[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                visited[i][j]=false;
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]==1){
+                    int c=0;
+                    queue<pair<int,int>>q;
+                    q.push({i,j});
+                    while(!q.empty()){
+                        pair<int,int>pp=q.front();
+                        q.pop();
+                        visited[pp.first][pp.second]=true;
+                        c++;
+                        for(int k=0;k<4;k++){
+                            int s=pp.first+dx[k];
+                            int ss=pp.second+dy[k];
+                            if(s>=0 && s<n && ss>=0 && ss<m && grid[s][ss]==1 && !visited[s][ss] ){
+                                visited[s][ss]=true;
+                                q.push({s,ss});
+                            }
+                        }
+                    }
+                    
+                     ans=max(ans,c);   
+                        
+                }
+            }
+        }
+        return ans;
+    }
+};
